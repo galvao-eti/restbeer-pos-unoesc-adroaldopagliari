@@ -17,8 +17,8 @@ class IndexController extends AbstractActionController
     public function indexAction()
     {
         $beers = $this->getServiceLocator()
-                      ->get('Application\Model\BeerTableGateway')
-                      ->fetchAll();
+            ->get('Application\Model\BeerTableGateway')
+            ->fetchAll();
         return new ViewModel(array('beers' => $beers));
     }
 
@@ -55,4 +55,16 @@ class IndexController extends AbstractActionController
 
         return new ViewModel(['beerForm' => $form]);
     }
+
+    public function deleteAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if ($id == 0) {
+            throw new \Exception("Código obrigatório");
+        }
+
+        $tableGateway = $this->getTableGateway()->delete($id);
+        return $this->redirect()->toUrl('/post');
+    }
+
 }
