@@ -63,8 +63,7 @@ class IndexController extends AbstractActionController
             throw new \Exception("Código obrigatório");
         }
 
-        $tableGateway = $this->getTableGateway()->delete($id);
-        return $this->redirect()->toUrl('/post');
+        return new ViewModel(['beerForm' => $form]);
     }
 
 }
