@@ -3,6 +3,6 @@
 
 <?php foreach ($beers as $beer): ?>
     <?php echo $beer->name; ?>
-    <a href="/insert/<?php echo $beer->id; ?>">Editar</a>
+    <a href="/edit/<?php echo $beer->id; ?>">Editar</a>
     <a href="/delete/<?php echo $beer->id; ?>">Deletar</a><br>        
 <?php endforeach;?>
